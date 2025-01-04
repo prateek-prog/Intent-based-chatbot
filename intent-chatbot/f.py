@@ -1,6 +1,6 @@
+import streamlit as st
 import spacy
 import json
-import streamlit as st
 import os
 import csv
 import datetime
