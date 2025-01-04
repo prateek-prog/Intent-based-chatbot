@@ -7,7 +7,7 @@ import datetime
 import random
 
 # Load SpaCy model
-nlp = spacy.load("C:\Users\prate\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\en_core_web_sm\en_core_web_sm-3.8.0")
+nlp = spacy.load(r"C:\Users\prate\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\LocalCache\local-packages\Python310\site-packages\en_core_web_sm\en_core_web_sm-3.8.0")
 
 # Function to parse and validate data
 def parse_greenskills_data(greenskills):
