@@ -122,7 +122,7 @@ def main():
     try:
         with open('greenskill.json', 'r') as f:
             greenskills = json.load(f)
-        greenskills = parse_greenskills_data(greenskills)
+            greenskills = parse_greenskills_data(greenskills)
     except FileNotFoundError:
         st.error("The file 'greenskills.json' was not found.")
         return
