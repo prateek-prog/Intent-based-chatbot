@@ -65,6 +65,8 @@ def chatbot(input_text, greenskills):
         elif year_response:
             if country_data["Year"] == year_response:
                 filtered_data.append(country_data)
+        else:
+            filtered_data = greenskills
 
     # Generate response based on the filtered data
     if filtered_data:
