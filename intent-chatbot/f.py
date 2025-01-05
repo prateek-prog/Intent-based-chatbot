@@ -9,7 +9,8 @@ import random
 import spacy
 
 nlp = spacy.load("en_core_web_sm")
-    
+
+
 # Function to parse and validate data
 def parse_greenskills_data(greenskills):
     validated_data = []
@@ -17,25 +18,29 @@ def parse_greenskills_data(greenskills):
         if isinstance(country_data, str):
             # Convert string to dictionary if needed
             country_data = json.loads(country_data)
-            validated_data.append(country_data)
+        validated_data.append(country_data)
     return validated_data
 
+
+# Function to find the file dynamically
 def find_file(file_name, search_dir=os.getcwd()):
     for root, dirs, files in os.walk(search_dir):
         if file_name in files:
             return os.path.join(root, file_name)
     return None
+
+
 # Chatbot logic with SpaCy integration
 def chatbot(input_text, greenskills):
     # Process input with SpaCy
     doc = nlp(input_text)
     entities = [(ent.text, ent.label_) for ent in doc.ents]
-    year=[(ent.text, ent.label_) for ent in doc.ents]
+    year = [(ent.text, ent.label_) for ent in doc.ents]
     # Extract intents or keywords based on entities
     input_text = input_text.lower()
     entity_response = f"Identified Entities: {entities}" if entities else "No entities identified."
-    year_response=  f"Identified Entities: {year}" if entities else "No entities identified."
-    
+    year_response = f"Identified Entities: {year}" if entities else "No entities identified."
+
     # Check for country name in the input
     for country_data in greenskills:
         if country_data["Entity"].lower() in input_text:
@@ -60,7 +65,6 @@ def chatbot(input_text, greenskills):
         elif year_response:
             if country_data["Year"] == year_response:
                 filtered_data.append(country_data)
-
 
     # Generate response based on the filtered data
     if filtered_data:
@@ -87,15 +91,13 @@ def chatbot(input_text, greenskills):
                 longitude = country_data.get("Longitude", "Data not available")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): Latitude is {latitude}, Longitude is {longitude}.")
             elif "clean fuels for cooking" in input_text:
-                fuels = country_data.get("Access to clean fuels for cooking","Data not avaliable")
-                responses.append(f"{country_data['Entity']} ({country_data['Year']}): Access to clean fuels for cooking is{fuels}.")
-            elif "Electricity from nuclear" in input_text:
-                nuclear_access_to_electricity =country_data.get("Electricity from nuclear(TWh)","Data not avaliable")
-                responses.append(f"{country_data['Entity']} ({country_data['Year']}): Electricity from nuclearis{nuclear_access_to_electricity}TWh.")
-          
-        # Return all filtered responses
-       # return entity_response + "\n" + "\n".join(responses)
-        return "\n"+ "\n".join(responses)
+                fuels = country_data.get("Access to clean fuels for cooking", "Data not available")
+                responses.append(f"{country_data['Entity']} ({country_data['Year']}): Access to clean fuels for cooking is {fuels}.")
+            elif "electricity from nuclear" in input_text:
+                nuclear_access_to_electricity = country_data.get("Electricity from nuclear(TWh)", "Data not available")
+                responses.append(f"{country_data['Entity']} ({country_data['Year']}): Electricity from nuclear is {nuclear_access_to_electricity} TWh.")
+
+        return "\n" + "\n".join(responses)
     else:
         # If no matching data found
         if entity_response and year_response:
@@ -108,7 +110,6 @@ def chatbot(input_text, greenskills):
             return random.choice(["I'm sorry, I didn't understand that.", "Can you please rephrase your question?"])
 
 
-#print("hello")
 # Streamlit application
 def main():
     st.title("Intent-based Chatbot using NLP and SpaCy")
@@ -136,6 +137,7 @@ def main():
     else:
         st.error("The file 'greenskill.json' was not found. Please ensure it is in the project directory.")
         return
+
     if choice == "Home":
         st.write("Welcome to the chatbot. Type a message below to start the conversation.")
         user_input = st.text_input("You:", key="user_input")
@@ -176,6 +178,7 @@ def main():
             - View previous conversations.
             - Easily extensible for new intents.
         """)
+
 
 if __name__ == "__main__":
     main()
