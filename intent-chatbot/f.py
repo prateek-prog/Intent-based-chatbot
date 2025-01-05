@@ -20,7 +20,11 @@ def parse_greenskills_data(greenskills):
             validated_data.append(country_data)
     return validated_data
 
-
+def find_file(file_name, search_dir=os.getcwd()):
+    for root, dirs, files in os.walk(search_dir):
+        if file_name in files:
+            return os.path.join(root, file_name)
+    return None
 # Chatbot logic with SpaCy integration
 def chatbot(input_text, greenskills):
     # Process input with SpaCy
@@ -118,15 +122,20 @@ def main():
             csv_writer = csv.writer(csvfile)
             csv_writer.writerow(['User Input', 'Chatbot Response', 'Timestamp'])
 
-    # Load greenskills data once
-    try:
-        with open('/intent-chatbot/greenskills.json', 'r') as f:
-            greenskills = json.load(f)
-            greenskills = parse_greenskills_data(greenskills)
-    except FileNotFoundError:
-        st.error("The file 'greenskills.json' was not found.")
-        return
+    # Locate the JSON file dynamically
+    json_file_path = find_file("greenskills.json")
 
+    if json_file_path:
+        try:
+            with open(json_file_path, 'r') as f:
+                greenskills = json.load(f)
+                greenskills = parse_greenskills_data(greenskills)
+        except Exception as e:
+            st.error(f"An error occurred while loading 'greenskill.json': {str(e)}")
+            return
+    else:
+        st.error("The file 'greenskill.json' was not found. Please ensure it is in the project directory.")
+        return
     if choice == "Home":
         st.write("Welcome to the chatbot. Type a message below to start the conversation.")
         user_input = st.text_input("You:", key="user_input")
