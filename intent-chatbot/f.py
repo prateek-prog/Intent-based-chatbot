@@ -7,10 +7,7 @@ import datetime
 import random
 
 # Load SpaCy model
-
-
-# Ensure the model is downloaded in the deployed environment
- nlp=spacy.load("en_core_web_sm")
+ nlp = spacy.load("en_core_web_sm")
 
     
 
