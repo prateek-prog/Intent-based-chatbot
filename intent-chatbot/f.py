@@ -38,8 +38,10 @@ def chatbot(input_text, greenskills):
     year = [(ent.text, ent.label_) for ent in doc.ents]
     # Extract intents or keywords based on entities
     input_text = input_text.lower()
-    entity_response = f"Identified Entities: {entities}" if entities else "No entities identified."
-    year_response = f"Identified Entities: {year}" if entities else "No entities identified."
+    entity_response=None
+    year_response=None
+    #entity_response = f"Identified Entities: {entities}" if entities else "No entities identified."
+    #year_response = f"Identified Entities: {year}" if entities else "No entities identified."
 
     # Check for country name in the input
     for country_data in greenskills:
