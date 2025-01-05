@@ -10,13 +10,8 @@ import random
 
 
 # Ensure the model is downloaded in the deployed environment
-model_name = "en_core_web_sm"
-try:
-    nlp = spacy.load(model_name)
-except OSError:
-    from spacy.cli import download
-    download(model_name)
-    nlp = spacy.load(model_name)
+ nlp=spacy.load("en_core_web_sm")
+
     
 
 # Function to parse and validate data
