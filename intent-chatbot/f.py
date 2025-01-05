@@ -120,7 +120,7 @@ def main():
 
     # Load greenskills data once
     try:
-        with open('greenskills.json', 'r') as f:
+        with open('/intent-chatbot/greenskills.json', 'r') as f:
             greenskills = json.load(f)
             greenskills = parse_greenskills_data(greenskills)
     except FileNotFoundError:
