@@ -17,7 +17,7 @@ def parse_greenskills_data(greenskills):
         if isinstance(country_data, str):
             # Convert string to dictionary if needed
             country_data = json.loads(country_data)
-        validated_data.append(country_data)
+            validated_data.append(country_data)
     return validated_data
 
 
@@ -104,7 +104,7 @@ def chatbot(input_text, greenskills):
             return random.choice(["I'm sorry, I didn't understand that.", "Can you please rephrase your question?"])
 
 
-print("hello")
+#print("hello")
 # Streamlit application
 def main():
     st.title("Intent-based Chatbot using NLP and SpaCy")
@@ -120,7 +120,7 @@ def main():
 
     # Load greenskills data once
     try:
-        with open('greenskill.json', 'r') as f:
+        with open('greenskills.json', 'r') as f:
             greenskills = json.load(f)
             greenskills = parse_greenskills_data(greenskills)
     except FileNotFoundError:
