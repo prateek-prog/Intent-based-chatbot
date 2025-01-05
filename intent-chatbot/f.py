@@ -38,8 +38,8 @@ def chatbot(input_text, greenskills):
     year = [(ent.text, ent.label_) for ent in doc.ents]
     # Extract intents or keywords based on entities
     input_text = input_text.lower()
-    entity_response=None
-    year_response=None
+    entity_response = None
+    year_response = None
     #entity_response = f"Identified Entities: {entities}" if entities else "No entities identified."
     #year_response = f"Identified Entities: {year}" if entities else "No entities identified."
 
@@ -57,15 +57,16 @@ def chatbot(input_text, greenskills):
 
     # Filter data based on the specific entity and year
     filtered_data = []
-    for country_data in greenskills:
-        if entity_response and year_response:
-            if country_data["Entity"].lower() == entity_response.lower() and country_data["Year"] == year_response:
+    if entity_response and year_response:
+        for country_data in greenskills:
+            if entity_response and year_response:
+              if country_data["Entity"].lower() == entity_response.lower() and country_data["Year"] == year_response:
                 filtered_data.append(country_data)
-        elif entity_response:
-            if country_data["Entity"].lower() == entity_response.lower():
+            elif entity_response:
+              if country_data["Entity"].lower() == entity_response.lower():
                 filtered_data.append(country_data)
-        elif year_response:
-            if country_data["Year"] == year_response:
+            elif year_response:
+             if country_data["Year"] == year_response:
                 filtered_data.append(country_data)
         else:
             filtered_data = greenskills
