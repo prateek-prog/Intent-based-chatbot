@@ -7,14 +7,9 @@ import random
 
 # Load SpaCy model
 import spacy
-from spacy.cli import download
 
-# Check if the model is available, download if not
-try:
-    nlp = spacy.load("en_core_web_sm")
-except OSError:
-    download("en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load("en_core_web_sm")
+
     
 # Function to parse and validate data
 def parse_greenskills_data(greenskills):
