@@ -1,24 +1,24 @@
-import streamlit as st
 import spacy
 import json
+import streamlit as st
 import os
 import csv
 import datetime
 import random
 
 # Load SpaCy model
- nlp = spacy.load("en_core_web_sm")
-
-    
+nlp = spacy.load("en_core_web_sm")
 
 # Function to parse and validate data
 def parse_greenskills_data(greenskills):
     validated_data = []
     for country_data in greenskills:
-        if isinstance(country_data, str):  # Convert string to dictionary if needed
+        if isinstance(country_data, str):
+            # Convert string to dictionary if needed
             country_data = json.loads(country_data)
         validated_data.append(country_data)
     return validated_data
+
 
 # Chatbot logic with SpaCy integration
 def chatbot(input_text, greenskills):
