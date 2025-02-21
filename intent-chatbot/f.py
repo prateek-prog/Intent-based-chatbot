@@ -3,12 +3,13 @@ import streamlit as st
 import os
 import csv
 import datetime
-import random
+from p import chatbot
+#import random
 
 # Load SpaCy model
-import spacy
+#import spacy
 
-nlp = spacy.load("en_core_web_sm")
+#nlp = spacy.load("en_core_web_sm")
 
 
 # Function to parse and validate data
@@ -29,7 +30,7 @@ def find_file(file_name, search_dir=os.getcwd()):
             return os.path.join(root, file_name)
     return None
 
-
+'''
 # Chatbot logic with SpaCy integration
 def chatbot(input_text, greenskills):
     # Process input with SpaCy
@@ -115,7 +116,7 @@ def chatbot(input_text, greenskills):
             return f"No data found for the year {year_response}."
         else:
             return random.choice(["I'm sorry, I didn't understand that.", "Can you please rephrase your question?"])
-
+'''
 # Streamlit application
 def main():
     st.title("Intent-based Chatbot using NLP and SpaCy")
