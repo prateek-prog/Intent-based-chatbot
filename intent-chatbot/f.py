@@ -61,7 +61,7 @@ def main():
 
     if choice == "Home":
         st.write("Welcome to the chatbot. Type a message below to start the conversation.")
-        user_input = st.text_input("You:", key="user_input")
+        user_input = st.text_input("You:", key="input_text")
         if user_input:
             response = chatbot(user_input, greenskills)
             st.text(f"Chatbot: {response}")
