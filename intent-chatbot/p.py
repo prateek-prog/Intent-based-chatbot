@@ -1,7 +1,7 @@
 import spacy
 import random
 nlp = spacy.load("en_core_web_sm")
-def chatbot  (user_input, greenskills):
+def chatbot  (input_text, greenskills):
 
 # Process input with SpaCy
     doc = nlp(input_text)
@@ -70,16 +70,16 @@ def chatbot  (user_input, greenskills):
             elif "nuclear electicity" in input_text:
                 nuclear_electricity =country_data.get("Electricity from nuclear(TWh)","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): Electricity from nuclear (TWh) is{nuclear_electricity}TWh.")
-            #elif "fossil fuels":
-             #    fossil_fuel_electricity = country_data.get("Electricity from fossil fuels (TWh)","Data not avaliable")
-              #   responses.append(f"{country_data['Entity']} ({country_data['Year']}): Electricity from fossil fuels (TWh) is{fossil_fuel_electricity}TWh.")
-            elif "financial flow for developing countries":
+            elif "fossil fuels" in input_text:
+                 fossil_fuel_electricity = country_data.get("Electricity from fossil fuels (TWh)","Data not avaliable")
+                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): Electricity from fossil fuels (TWh) is{fossil_fuel_electricity}TWh.")
+            elif "financial flow for developing countries" in input_text:
                 financial_developement = country_data.get("Financial flows to developing countries (US $)","Data not avaliable")  
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}):Financial flows to developing countries (US $) is{financial_developement}TWh.")
-            elif "Low-carbon electricity":
+            elif "Low-carbon electricity" in input_text:
                 low_carbon_electricity = country_data.get("Low-carbon electricity (% electricity)","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}):Low-carbon electricity is{low_carbon_electricity}%.") 
-            elif "Land Area":
+            elif "Land Area" in input_text:
                land_area = country_data.get("Land-area(KM2)","Data not avaliable")
                responses.append(f"{country_data['Entity']} ({country_data['Year']}):Land-area is{land_area}KM2.")               
         # Return all filtered responses
