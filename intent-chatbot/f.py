@@ -30,7 +30,6 @@ def find_file(file_name, search_dir=os.getcwd()):
             return os.path.join(root, file_name)
     return None
 
-
 # Streamlit application
 def main():
     st.title("Intent-based Chatbot using NLP and SpaCy")
@@ -61,7 +60,7 @@ def main():
 
     if choice == "Home":
         st.write("Welcome to the chatbot. Type a message below to start the conversation.")
-        user_input = st.text_input("You:", key="input_text")
+        user_input = st.text_input("You:", key="user_input")
         if user_input:
             response = chatbot(user_input, greenskills)
             st.text(f"Chatbot: {response}")

@@ -1,7 +1,7 @@
 import spacy
 import random
 nlp = spacy.load("en_core_web_sm")
-def chatbot  (input_text, greenskills):
+def chatbot  (user_input, greenskills):
 
 # Process input with SpaCy
     doc = nlp(input_text)
