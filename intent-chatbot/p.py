@@ -81,7 +81,7 @@ def chatbot  (input_text, greenskills):
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}):Low-carbon electricity is{low_carbon_electricity}%.") 
             elif "Land Area" in input_text:
                land_area = country_data.get("Land Area(KM2)","Data not avaliable")
-               responses.append(f"{country_data['Entity']} ({country_data['Year']}):Land Area is{land_area}KM2.")               
+               responses.append(f"{country_data['Entity']}):Land Area is{land_area}KM2.")               
         # Return all filtered responses
        # return entity_response + "\n" + "\n".join(responses)
         return "\n"+ "\n".join(responses)
