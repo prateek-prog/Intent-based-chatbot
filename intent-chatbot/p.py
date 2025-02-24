@@ -84,7 +84,7 @@ def chatbot  (input_text, greenskills):
                #responses.append(f"{country_data['Entity']}):Land Area is{land_area}KM2.")       
                 land_area = country_data.get("Land Area(KM2)")
             if land_area:
-              responses.append(f"{country_data.get('Entity', 'Unknown Country')}: Land Area is {land_area} KM².")
+              responses.append(f"{country_data.get['Entity']}: Land Area is {land_area} KM².")
             else:
               responses.append(f"No data found for {country_data.get('Entity', 'this country')}.")
         # Return all filtered responses
