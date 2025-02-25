@@ -53,9 +53,9 @@ def chatbot  (input_text, greenskills):
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): Renewable energy share is {renewable_energy_share}%.")
 
             elif "co2 emissions" in input_text:
-                co2_emissions = country_data.get("Value_co2_emissions_kt_by_country", "Data not available")
-                responses.append(f"{country_data['Entity']} ({country_data['Year']}): CO2 emissions are {co2_emissions} kt.")
-
+                #co2_emissions = country_data.get("Value_co2_emissions_kt_by_country", "Data not available")
+                #responses.append(f"{country_data['Entity']} ({country_data['Year']}): CO2 emissions are {co2_emissions} kt.")
+                responses.append(f"{country_data['Entity']} ({country_data['Year']}): CO2 emissions are {country_data.get('Value_co2_emissions_kt_by_country', 'Data not available')} kt.")
             elif "gdp growth" in input_text:
                 gdp_growth = country_data.get("gdp_growth", "Data not available")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): GDP growth rate is {gdp_growth}.")
