@@ -65,7 +65,7 @@ def chatbot  (input_text, greenskills):
                 longitude = country_data.get("Longitude", "Data not available")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): Latitude is {latitude}, Longitude is {longitude}.")
 
-            elif "Access to clean fuels for cooking" in input_text:
+            elif "clean fuels for cooking" in input_text:
                 fuels = country_data.get("Access to clean fuels for cooking","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): Access to clean fuels for cooking is{fuels}.")
 
