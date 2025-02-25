@@ -80,7 +80,7 @@ def chatbot  (input_text, greenskills):
                 financial_developement = country_data.get("Financial flows to developing countries (US $)","Data not avaliable")  
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}):Financial flows to developing countries (US $) is {financial_developement}TWh.")
             elif "low carbon electricity" in input_text:
-                low_carbon_electricity = country_data.get("Low-carbon electricity (% electricity)","Data not avaliable")
+                low_carbon_electricity = country_data.get("Low-carbon electricity (% of total electricity)","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}):Low-carbon electricity is {low_carbon_electricity}%.") 
             elif "land area" in input_text:
                land_area = country_data.get("Land Area(Km2)","Data not avaliable")
