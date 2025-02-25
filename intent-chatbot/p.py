@@ -91,13 +91,13 @@ def chatbot  (input_text, greenskills):
             elif "Primary energy consumption per capita" in input_text:
                 energy_consumption= country_data.get("Primary energy consumption per capita (kWh/person)","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}):Density of Area is {energy_consumption} KWh/person.")
-            elif "Energy intensity level of primary energy" in input_text:
+            elif "energy intensity level of primary energy" in input_text:
                 energy_intensity_level=country_data.get("Energy intensity level of primary energy (MJ/$2017 PPP GDP)","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']}): Energy intensity level of primary energy is {energy_intensity_level} MJ/$2017 PPP GDP.")
-            elif "Renewables" in input_text:
+            elif "renewables" in input_text:
                 renewable_energy_share1= country_data.get("Renewables (% of equivalent primary energy)","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']})Renewables of equivalent primary energy is {renewable_energy_share1} %.")
-            elif "Renewable electricity generating capacity per capita" in input_text:
+            elif "renewable electricity generating capacity per capita" in input_text:
                 renewable_electricity= country_data.get("Renewable-electricity-generating-capacity-per-capita","Data not avaliable")
                 responses.append(f"{country_data['Entity']} ({country_data['Year']})Renewables of equivalent primary energy is {renewable_electricity} W/person.")
             elif "renewable electricity" in input_text:
