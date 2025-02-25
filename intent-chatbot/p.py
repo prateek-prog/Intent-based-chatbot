@@ -8,13 +8,13 @@ def chatbot  (input_text, greenskills):
     entities = [(ent.text, ent.label_) for ent in doc.ents]
     year=[(ent.text, ent.label_) for ent in doc.ents]
     # Extract intents or keywords based on entities
-    input_text = input_text.lower()
+    input_text = input_text.casefold()
     entity_response = f"Identified Entities: {entities}" if entities else "No entities identified."
     year_response=  f"Identified Entities: {year}" if entities else "No entities identified."
     
     # Check for country name in the input
     for country_data in greenskills:
-        if country_data["Entity"].lower() in input_text:
+        if country_data["Entity"].casefold() in input_text:
             entity_response = country_data["Entity"]
             break
 
@@ -29,10 +29,10 @@ def chatbot  (input_text, greenskills):
     if entity_response and year_response:
      for country_data in greenskills:
         if entity_response and year_response:
-            if country_data["Entity"].lower() == entity_response.lower() and country_data["Year"] == year_response:
+            if country_data["Entity"].casefold() == entity_response.lower() and country_data["Year"] == year_response:
                 filtered_data.append(country_data)
         elif entity_response:
-            if country_data["Entity"].lower() == entity_response.lower():
+            if country_data["Entity"].casefold() == entity_response.lower():
                 filtered_data.append(country_data)
         elif year_response:
             if country_data["Year"] == year_response:
